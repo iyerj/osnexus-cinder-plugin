@@ -1,0 +1,4 @@
+# Devstack settings
+
+# we have to add nexenta to enabled services
+enable_service quantastor
