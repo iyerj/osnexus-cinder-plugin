@@ -23,8 +23,12 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
 
     echo "Latest patchset ref is $LATEST_PATCHSET"
 
-    git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick --continue FETCH_HEAD
+    git branch -v | grep OSNEXUS
 
+    if [ $(echo $?) -ne 0 ];
+    then
+        git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick FETCH_HEAD
+    fi
 
 
 fi
