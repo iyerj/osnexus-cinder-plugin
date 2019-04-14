@@ -25,8 +25,7 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
 
     git branch -v | grep OSNEXUS
 
-    if [ $(echo $?) -ne 0 ];
-    then
+    if [ ! -e /opt/stack/cinder/cinder/volume/drivers/quantastor.py ]; then
         git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick FETCH_HEAD
     fi
 
