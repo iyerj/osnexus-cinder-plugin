@@ -23,8 +23,9 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
 
     echo "Latest patchset ref is $LATEST_PATCHSET"
 
-    git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick FETCH_HEAD
+    git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick --continue FETCH_HEAD
+
+
 
 fi
 
-exit 0
