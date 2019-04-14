@@ -26,3 +26,5 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
     git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick FETCH_HEAD
 
 fi
+
+exit 0
