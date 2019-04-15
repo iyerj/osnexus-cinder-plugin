@@ -22,6 +22,8 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
     fi
 
     echo "Latest patchset ref is $LATEST_PATCHSET"
+    touch /home/tempest/devstack/commit-id
+    git rev-parse --short HEAD > /home/tempest/devstack/commit-id
 
     if [ ! -e /opt/stack/cinder/cinder/volume/drivers/quantastor.py ]; then
         git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick FETCH_HEAD
