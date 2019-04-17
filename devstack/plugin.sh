@@ -26,7 +26,9 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
     echo 'cinder_commit_id ' | tr -d '\n'  > /home/tempest/devstack/commit-id && git rev-parse --short HEAD >> /home/tempest/devstack/commit-id
 
     if [ ! -e /opt/stack/cinder/cinder/volume/drivers/quantastor.py ]; then
-        git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick FETCH_HEAD
+        #git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick FETCH_HEAD
+        cp /opt/stack/quantastor/devstack/quantastor.py /opt/stack/cinder/cinder/volume/drivers/quantastor.py
+        cp /opt/stack/quantastor/devstack/quantastor_api.py /opt/stack/cinder/cinder/volume/drivers/quantastor_api.py
     fi
 
 
