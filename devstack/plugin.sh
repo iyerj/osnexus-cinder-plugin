@@ -18,7 +18,6 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
 
     if [ -z "$LATEST_PATCHSET" ]; then
         echo "Failed to determine latest patchset of $PATCHSET_BASE from $UPSTREAM_REMOTE"
-        exit 1
     fi
 
     echo "Latest patchset ref is $LATEST_PATCHSET"
