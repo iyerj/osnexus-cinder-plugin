@@ -7,7 +7,7 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
     cd /opt/stack/cinder
 
     # fetch latest patchset from gerrit
-    UPSTREAM_REMOTE=https://git.openstack.org/openstack/cinder
+    UPSTREAM_REMOTE=https://review.opendev.org/openstack/cinder
 
     # set this to your gerrit change number
     CHANGE_NUM=617503
