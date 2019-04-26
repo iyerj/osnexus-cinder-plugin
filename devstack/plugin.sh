@@ -23,17 +23,14 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
     echo "Latest patchset ref is $LATEST_PATCHSET"
     touch /home/tempest/devstack/commit-id
     echo 'cinder_commit_id ' | tr -d '\n'  > /home/tempest/devstack/commit-id && git rev-parse --short HEAD >> /home/tempest/devstack/commit-id
+
     cd /opt/stack/quantastor
-    git clone https://gitlab.com/osnexus/sos-ci.git
+    git clone $UPSTREAM_REMOTE
+    cd /opt/stack/quantastor/cinder
+    git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git checkout FETCH_HEAD
     if [ ! -e /opt/stack/cinder/cinder/volume/drivers/quantastor.py ]; then
-        #git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick FETCH_HEAD
-        #cp /opt/stack/quantastor/devstack/quantastor.py /opt/stack/cinder/cinder/volume/drivers/quantastor.py
-        #cp /opt/stack/quantastor/devstack/quantastor_api.py /opt/stack/cinder/cinder/volume/drivers/quantastor_api.py
-
-	cp /opt/stack/quantastor/sos-ci/cinder-qstor-plugin/quantastor.py /opt/stack/cinder/cinder/volume/drivers/quantastor.py
-	cp /opt/stack/quantastor/sos-ci/cinder-qstor-plugin/quantastor_api.py /opt/stack/cinder/cinder/volume/drivers/quantastor_api.py
+	cp /opt/stack/quantastor/cinder/cinder/volume/drivers/quantastor.py /opt/stack/cinder/cinder/volume/drivers/quantastor.py
+	cp /opt/stack/quantastor/cinder/cinder/volume/drivers/quantastor_api.py /opt/stack/cinder/cinder/volume/drivers/quantastor_api.py
     fi
-
-
 fi
 
