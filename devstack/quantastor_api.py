@@ -359,14 +359,11 @@ class QuantastorClient(object):
     def build_tgt_ip(ip_addr):
         try:
             addr = ipaddress.ip_address(u"%s" % ip_addr)
-            if addr.version == 4:
-                ip = ip_addr
-            else:
-                ip = '[%s]' % ip_addr
+            if addr.version == 6:
+                ip_addr = '[%s]' % ip_addr
         except BaseException:
-            raise Exception('san_ip address is invalid: ', ip_addr)
-        return ip
-
+            pass
+        return ip_addr
 
 class Tier(object):
     def __init__(self, name, id):
