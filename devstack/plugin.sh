@@ -23,8 +23,8 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
     echo "Latest patchset ref is $LATEST_PATCHSET"
     touch /home/tempest/devstack/commit-id
     echo 'cinder_commit_id ' | tr -d '\n'  > /home/tempest/devstack/commit-id && git rev-parse --short HEAD >> /home/tempest/devstack/commit-id
-
-    git clone https://gitlab.com/osnexus/sos-ci.git /opt/stack/quantastor
+    cd /opt/stack/quantastor
+    git clone https://gitlab.com/osnexus/sos-ci.git
     if [ ! -e /opt/stack/cinder/cinder/volume/drivers/quantastor.py ]; then
         #git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git cherry-pick FETCH_HEAD
         #cp /opt/stack/quantastor/devstack/quantastor.py /opt/stack/cinder/cinder/volume/drivers/quantastor.py
