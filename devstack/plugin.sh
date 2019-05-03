@@ -25,6 +25,7 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
     echo 'cinder_commit_id ' | tr -d '\n'  > /home/tempest/devstack/commit-id && git rev-parse --short HEAD >> /home/tempest/devstack/commit-id
 
     cd /opt/stack/quantastor
+    rm -rf cinder
     git clone $UPSTREAM_REMOTE
     cd /opt/stack/quantastor/cinder
     git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git checkout FETCH_HEAD
