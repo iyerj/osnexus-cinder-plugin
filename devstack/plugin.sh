@@ -30,6 +30,7 @@ if [[ "$1" == "stack" && "$2" == "install" ]]; then
     cd /opt/stack/quantastor/cinder
     git fetch $UPSTREAM_REMOTE $LATEST_PATCHSET && git checkout FETCH_HEAD
     if [ ! -e /opt/stack/cinder/cinder/volume/drivers/osnexus/quantastor.py ]; then
+	mkdir /opt/stack/cinder/cinder/volume/drivers/osnexus
 	cp /opt/stack/quantastor/cinder/cinder/volume/drivers/osnexus/quantastor.py /opt/stack/cinder/cinder/volume/drivers/osnexus/quantastor.py
 	cp /opt/stack/quantastor/cinder/cinder/volume/drivers/osnexus/quantastor_api.py /opt/stack/cinder/cinder/volume/drivers/osnexus/quantastor_api.py
     fi
