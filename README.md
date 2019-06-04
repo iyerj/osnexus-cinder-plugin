@@ -1,0 +1,1 @@
+# osnexus-cinder-plugin
